@@ -1,0 +1,8 @@
+.matrix {
+  --matrix-border-color: #808080;
+  background-color: red;
+}
+
+.matrix.bordered {
+  border: solid 1px var(--matrix-border-color);
+}

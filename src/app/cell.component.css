@@ -1,18 +1,32 @@
 .cell {
-  min-width: 10px;
-  min-height: 10px;
+  --cell-hover-color: rgba(90, 163, 163, 0.267);
+  --cell-selected-color: rgba(69, 179, 179, 0.267);
+  --cell-min-size: 30px;
+  --cell-border-color: #808080;
+  min-width: var(--cell-min-size);
+  min-height: var(--cell-min-size);
+  display: inline-block;
+  margin: 0;
 }
 
 .cell.bordered {
-  border: solid 1px #505050;
+  border: solid 2px var(--cell-border-color);
+}
+
+.cell:hover {
+  cursor: pointer;
+}
+
+.cell:not(.selected):hover::after {
+  background-color: var(--cell-hover-color);
 }
 
 .cell.selected::after {
+  content: '';
   position: absolute;
-  width: 100%;
+  width: var(--cell-min-size);
   height: 100%;
-  top: 0;
-  left: 0;
   z-index: 2;
-  background-color: rgba(90, 163, 163, 0.836);
+  overflow: hidden;
+  background-color: var(--cell-selected-color);
 }

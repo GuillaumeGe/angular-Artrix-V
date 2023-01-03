@@ -1,3 +1,7 @@
 p {
   font-family: Lato;
 }
+
+:root {
+  --matrix-border-color: #505050;
+}
