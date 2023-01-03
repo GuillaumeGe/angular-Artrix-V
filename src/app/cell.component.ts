@@ -5,7 +5,10 @@ import {
   ChangeDetectionStrategy,
   EventEmitter,
   HostListener,
+  ViewChild,
+  ElementRef,
   OnInit,
+  AfterViewInit,
 } from '@angular/core';
 
 import { fromEvent, ReplaySubject } from 'rxjs';
@@ -38,24 +41,33 @@ import { Cell, CellType } from './cell.type';
   styleUrls: ['./cell.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-  <div 
-    class="cell {{hasBorder ? 'bordered' : ''}} {{selected ? 'selected' : ''}}" 
+    <div class="cell {{hasBorder ? 'bordered' : ''}} {{selected ? 'selected' : ''}}" 
     [style.background-color]="this.renderBkgColor()"
-  >{{renderContent()}}
-  </div>`,
+    (mouseenter)="onMouseEnter()">
+    {{renderContent()}}
+    </div>
+`,
 })
-export class CellComponent implements OnInit {
+export class CellComponent implements AfterViewInit {
   hover: boolean;
   selected: boolean;
   @Input() cell: Cell;
   @Input() hasBorder: boolean;
+  @Output() cellEmmitter = new EventEmitter<Cell>();
 
+  mouseEnter$ = fromEvent;
   constructor() {
     // this.hover = false;
     // this.selected = false;
   }
 
-  ngOnInit() {}
+  ngAfterViewInit() {
+    //this.cellEmmitter.emit(this.cell);
+  }
+
+  onMouseEnter() {
+    this.cellEmmitter.emit(this.cell);
+  }
 
   renderBkgColor() {
     let result = 'transparent';

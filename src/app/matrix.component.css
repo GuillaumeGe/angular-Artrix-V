@@ -1,8 +1,12 @@
 .matrix {
   --matrix-border-color: #808080;
-  background-color: red;
+  /* width: fit-content; */
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  flex-direction: space-between;
 }
 
 .matrix.bordered {
-  border: solid 1px var(--matrix-border-color);
+  border: solid 2px var(--matrix-border-color);
 }
