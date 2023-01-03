@@ -8,13 +8,13 @@ import { Cell, CellType } from './cell.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <hr>
-  <ggl-matrix [matrix]="matrix" [hasBorder]="true"></ggl-matrix>
+  <ggl-matrix [matrix]="matrix" [hasBorder]="true" (dragOnCells)="onDragCell($event)"></ggl-matrix>
   <hr>
   `,
 })
 export class AppComponent {
   name = 'Angular ' + VERSION.major;
-  colorTest = '#f08500';
+  editColor = '#f08500';
   matrix: Matrix = {
     dimensions: {
       width: 4,
@@ -41,4 +41,6 @@ export class AppComponent {
     ],
     metadata: undefined,
   };
+
+  onDragCell(cells: Cell[]) {}
 }

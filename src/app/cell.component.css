@@ -1,6 +1,6 @@
 .cell {
   --cell-hover-color: rgba(90, 163, 163, 0.267);
-  --cell-selected-color: rgba(69, 179, 179, 0.267);
+  --cell-selected-color: rgba(255, 255, 255, 0.267);
   --cell-min-size: 50px;
   --cell-border-color: #808080;
   min-width: var(--cell-min-size);
@@ -20,16 +20,24 @@
   cursor: pointer;
 }
 
-.cell:not(.selected):hover::after {
-  background-color: var(--cell-hover-color);
-}
-
-.cell.selected::after {
-  content: '';
+.cell::after {
   position: absolute;
   width: var(--cell-min-size);
   height: 100%;
   z-index: 2;
   overflow: hidden;
+}
+
+.cell:hover {
+  border-color: white;
+}
+
+.cell:hover::after {
+  content: '';
+  background-color: var(--cell-hover-color);
+}
+
+.cell.selected::after {
+  content: '';
   background-color: var(--cell-selected-color);
 }

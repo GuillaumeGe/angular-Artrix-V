@@ -43,7 +43,8 @@ import { Cell, CellType } from './cell.type';
   template: `
     <div class="cell {{hasBorder ? 'bordered' : ''}} {{selected ? 'selected' : ''}}" 
     [style.background-color]="this.renderBkgColor()"
-    (mouseenter)="onMouseEnter()">
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()">
     {{renderContent()}}
     </div>
 `,
@@ -66,7 +67,12 @@ export class CellComponent implements AfterViewInit {
   }
 
   onMouseEnter() {
+    // this.selected = true;
     this.cellEmmitter.emit(this.cell);
+  }
+
+  onMouseLeave() {
+    // this.selected = false;
   }
 
   renderBkgColor() {

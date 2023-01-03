@@ -37,7 +37,7 @@ import { Cell } from './cell.type';
         <ggl-cell 
         id="" 
         [cell]="cell" 
-        [hasBorder]="hasBorder"
+        [hasBorder]="hasBorder" 
         (cellEmmitter)="this.onCellDidChange($event)">
         </ggl-cell>
       </div>
@@ -48,10 +48,11 @@ export class MatrixComponent implements OnInit, OnDestroy {
   @Input() matrix: Matrix;
   @Input() hasBorder: boolean;
   @Input() showGrid: boolean;
+  @Output() dragOnCells = new EventEmitter<Cell[]>();
 
   isGridDragging: boolean;
   isGridClicked: boolean;
-  currentCell?: Cell;
+  currentCell?: Cell; //TODO: maybe change to stream
   previousCell?: Cell;
 
   mouseMove$: Observable<any>;
