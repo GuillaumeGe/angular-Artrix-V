@@ -1,0 +1,18 @@
+.cell {
+  min-width: 10px;
+  min-height: 10px;
+}
+
+.cell.bordered {
+  border: solid 1px #505050;
+}
+
+.cell.selected::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(90, 163, 163, 0.836);
+}

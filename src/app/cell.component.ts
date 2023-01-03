@@ -4,15 +4,24 @@ export enum CellType {}
 
 @Component({
   selector: 'artrix-cell',
-  template: ``,
+  styleUrls: ['./cell.component.css'],
+  template: `<div class="cell {{hasBorder ? "bordered" : ""}} {{selected ? "selected" : ""}}">
+  </div>`,
 })
 export class CellComponent {
-  @Input() selected: boolean;
+  selected: boolean;
+  @Input() hasBorder: boolean;
 
   constructor() {}
 
   onMouseEnter() {
-    console.log("mouse enter");
+    console.log('mouse enter');
+    this.selected = true;
+  }
+
+  onMouseLeave() {
+    console.log('mouse leave');
+    this.selected = false;
   }
 }
 
