@@ -33,9 +33,9 @@ import { Cell } from './cell.type';
     *ngIf="matrix.cells.length === matrix.dimensions.width * matrix.dimensions.height"
   >
     <div class="matrix {{hasBorder ? 'bordered' : ''}}" >
-      <div *ngFor="let cell of matrix.cells">
+      <div *ngFor="let cell of matrix.cells; index as i;">
         <ggl-cell 
-        id="" 
+        id="{{i}}" 
         [cell]="cell" 
         [hasBorder]="hasBorder" 
         (cellEmmitter)="this.onCellDidChange($event)">
